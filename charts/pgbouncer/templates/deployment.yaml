@@ -55,11 +55,6 @@ spec:
       containers:
       - name: pgbouncer
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        {{- if .Values.exporter.enabled }}
-        env:
-        - name: IGNORE_STARTUP_PARAMETERS
-          value: extra_float_digits
-        {{- end }}
         ports:
         - containerPort: 6432
         readinessProbe:
