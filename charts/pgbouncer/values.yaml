@@ -31,8 +31,12 @@ tls:
 envFrom: []  # must include DB_USER and DB_PASSWORD
 
 resources:
-  requests: { cpu: 100m, memory: 128Mi }
-  limits: { cpu: 500m, memory: 256Mi }
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
 
 service:
   type: ClusterIP
