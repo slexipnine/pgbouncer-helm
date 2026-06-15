@@ -41,6 +41,9 @@ resources:
 service:
   type: ClusterIP
   port: 6432
+  annotations: {}
+  # prometheus.io/scrape: "true"
+  # prometheus.io/port: "9127"
 
 exporter:
   enabled: false

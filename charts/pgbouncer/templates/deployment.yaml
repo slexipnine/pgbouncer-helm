@@ -79,7 +79,7 @@ spec:
         args:
         - --web.listen-address=:{{ .Values.exporter.port }}
         - --web.telemetry-path=/metrics
-        - --pgBouncer.connectionString=host=localhost port=6432 dbname=pgbouncer sslmode=require user=$(DB_USER) password=$(DB_PASSWORD)
+        - --pgBouncer.connectionString=host=localhost port=6432 dbname=pgbouncer sslmode={{ ternary .Values.tls.client.sslmode "disable" .Values.tls.client.enabled }} user=$(DB_USER) password=$(DB_PASSWORD)
         {{- with .Values.envFrom }}
         envFrom:
           {{- toYaml . | nindent 10 }}
