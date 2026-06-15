@@ -9,5 +9,10 @@ spec:
   ports:
   - port: {{ .Values.service.port }}
     targetPort: 6432
+  {{- if .Values.exporter.enabled }}
+  - name: metrics
+    port: {{ .Values.exporter.port }}
+    targetPort: {{ .Values.exporter.port }}
+  {{- end }}
   selector:
     {{- include "pgbouncer.selectorLabels" . | nindent 4 }}
